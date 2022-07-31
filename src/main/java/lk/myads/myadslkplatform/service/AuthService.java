@@ -22,7 +22,19 @@ public class AuthService {
 		return this.userRepository.save(newUserDetails);
 	}
 	
+	public Client checkUserByEmail(String email) {
+		return this.userRepository.findByEmailAddress(email);
+	}
+	
 	public List<Client> getAllClients(){
 		return this.userRepository.findAll();
+	}
+	
+	public Client getClientByEmailAndPassword(String email,String password) {
+		return this.userRepository.findByEmailAddressAndUserPass(email, password);
+	}
+	
+	public Client getClientByEmailAddress(String email) {
+		return this.checkUserByEmail(email);
 	}
 }
